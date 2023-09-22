@@ -62,4 +62,13 @@ public class RequestParamController {
         log.info("username={}, age={}", username, age);
         return "ok";
     }
+
+    @ResponseBody
+    @RequestMapping("/request-param-default")
+    public String requestParamDefault(
+            @RequestParam(defaultValue = "guest") String username,
+            @RequestParam(defaultValue = "-1") Integer age) {
+        log.info("username={}, age={}", username, age);
+        return "ok";
+    }
 }
