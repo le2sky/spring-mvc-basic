@@ -1,6 +1,7 @@
 package hello.springmvc.basic.request;
 
 import java.io.IOException;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -69,6 +70,13 @@ public class RequestParamController {
             @RequestParam(defaultValue = "guest") String username,
             @RequestParam(defaultValue = "-1") Integer age) {
         log.info("username={}, age={}", username, age);
+        return "ok";
+    }
+
+    @ResponseBody
+    @RequestMapping("/request-param-map")
+    public String requestParamMap(@RequestParam Map<String, Object> paramMap) {
+        log.info("username={}, age={}", paramMap.get("username"), paramMap.get("age"));
         return "ok";
     }
 }
